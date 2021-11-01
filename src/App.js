@@ -5,7 +5,7 @@ import React, { useReducer } from "react";
 import reducer, { initialState } from "./reducers/index";
 
 // Imported Actions
-import { addOne, applyNumber } from "./actions/index";
+import { addOne, applyNumber, changeOperation } from "./actions/index";
 
 // Imported Style Sheets
 import "./App.css";
@@ -21,6 +21,10 @@ function App() {
   // Event Handlers
   const handleNumberInput = (number) => {
     dispatch(applyNumber(number));
+  };
+
+  const handleChangeOperation = (operator) => {
+    dispatch(changeOperation(operator));
   };
 
   // const handleAddOne = () => {
@@ -74,9 +78,18 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} />
-              <CalcButton value={"*"} />
-              <CalcButton value={"-"} />
+              <CalcButton
+                value={"+"}
+                onClick={() => handleChangeOperation("+")}
+              />
+              <CalcButton
+                value={"*"}
+                onClick={() => handleChangeOperation("*")}
+              />
+              <CalcButton
+                value={"-"}
+                onClick={() => handleChangeOperation("-")}
+              />
             </div>
 
             <div className="row ce_button">
