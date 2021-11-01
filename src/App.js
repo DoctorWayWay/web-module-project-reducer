@@ -10,6 +10,9 @@ import {
   applyNumber,
   changeOperation,
   clearDisplay,
+  setMemory,
+  applyMemory,
+  clearMemory,
 } from "./actions/index";
 
 // Imported Style Sheets
@@ -34,6 +37,18 @@ function App() {
 
   const handleClearDisplay = () => {
     dispatch(clearDisplay());
+  };
+
+  const handleSetMemory = () => {
+    dispatch(setMemory());
+  };
+
+  const handleApplyMemory = () => {
+    dispatch(applyMemory());
+  };
+
+  const handleClearMemory = () => {
+    dispatch(clearMemory());
   };
 
   // const handleAddOne = () => {
@@ -63,9 +78,24 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"M+"} />
-              <CalcButton value={"MR"} />
-              <CalcButton value={"MC"} />
+              <CalcButton
+                value={"M+"}
+                onClick={() => {
+                  handleSetMemory();
+                }}
+              />
+              <CalcButton
+                value={"MR"}
+                onClick={() => {
+                  handleApplyMemory();
+                }}
+              />
+              <CalcButton
+                value={"MC"}
+                onClick={() => {
+                  handleClearMemory();
+                }}
+              />
             </div>
 
             <div className="row">
